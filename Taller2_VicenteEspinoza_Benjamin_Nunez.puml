@@ -1,0 +1,42 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+entity Veterinaria {
+nombre veterinaria
+}
+
+entity Empleados{
+rut
+nombre
+cargo
+}
+
+entity Mascotas{
+id
+nombre mascota
+especie
+edad
+estado
+empleado asignado
+}
+
+entity Fichas_medicas{
+
+id animal
+fecha
+motivo
+diagnostico
+nombre veterinario
+costo
+}
+
+
+Veterinaria "1" -> "1...*" Empleados : Contrata
+
+Empleados "1...*" -> "1...*" Mascotas: Atiende
+
+Mascotas "1" -> "1...*" Fichas_medicas: tiene
+
+Empleados "1" -> "0...*" Fichas_medicas: Rellena
+
+@enduml
